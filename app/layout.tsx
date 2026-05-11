@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import TopLoader from '@/components/top-loader'
+import { Suspense } from "react";
+import NavigationProgressBar from "@/components/NavigationProgressBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
     
-      {children}
+      <Suspense fallback={null}>
+          <NavigationProgressBar variant="glow" height={3} />
+        </Suspense>
+        {children}
       </body>
     </html>
   );

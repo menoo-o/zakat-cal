@@ -1,0 +1,240 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 56px 0 40px;
+}
+
+.heroIcon {
+  width: 56px;
+  height: 56px;
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 22px;
+  color: var(--gold-rich);
+  box-shadow: var(--shadow-sm);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.heroSubtitle {
+  font-size: 15px;
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Form column */
+.formCol {
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Controls row */
+.controlsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.controlLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.controlIcon {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 36px 10px 12px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.select:focus {
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.12);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--ink-muted);
+  pointer-events: none;
+}
+
+/* Nisab banner */
+.nisabBanner {
+  background: linear-gradient(135deg, var(--gold-rich) 0%, var(--gold-mid) 100%);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nisabLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nisabBadgeIcon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.nisabBannerLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 3px;
+}
+
+.nisabBannerValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nisabBannerAmount {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold-rich);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionIcon {
+  font-size: 18px;
+}
+
+.inputGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.separator {
+  height: 1px;
+  background: var(--border-soft);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .formCol {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .controlsRow,
+  .inputGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .nisabBanner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

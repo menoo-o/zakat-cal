@@ -1,0 +1,222 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 76px;
+  align-self: start;
+}
+
+.summaryCard {
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.summaryLabel {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.summaryValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.negative {
+  color: var(--danger);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-soft);
+  margin: 10px 0;
+}
+
+.netRow {
+  padding: 4px 0;
+}
+
+.netLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.netValue {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-rich);
+  font-variant-numeric: tabular-nums;
+}
+
+.nisabBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.nisabDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotAbove {
+  background: var(--success);
+}
+
+.dotBelow {
+  background: var(--ink-ghost);
+}
+
+.nisabText {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+/* Zakat card */
+.zakatCard {
+  background: var(--gold-rich);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.3s;
+}
+
+.zakatCardInactive {
+  opacity: 0.7;
+  background: var(--ink-muted);
+}
+
+.zakatLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 8px;
+}
+
+.zakatAmount {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.zakatNote {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* CTAs */
+.giveBtn {
+  width: 100%;
+  padding: 14px;
+  background: var(--gold-bright);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.giveBtn:hover {
+  background: var(--gold-rich);
+  transform: translateY(-1px);
+}
+
+.resetBtn {
+  width: 100%;
+  padding: 12px;
+  background: var(--surface-card);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.resetBtn:hover {
+  border-color: var(--gold-bright);
+  color: var(--gold-rich);
+  background: var(--gold-wash);
+}
+
+/* Rates */
+.ratesCard {
+  background: var(--surface-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+.ratesTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+
+.rateRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.rateLabel {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.rateValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.historicalLink {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--gold-rich);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.historicalLink:hover {
+  color: var(--gold-dark);
+}

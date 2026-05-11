@@ -1,12 +1,15 @@
-import Link from "next/link"
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ZakatCalculator from "@/components/ZakatCalculator";
 
-export default async function Home() {
-
+export default function Home() {
   return (
-    <div>
-      <Link href="/rates">View Rates</Link>
-        
-    </div>
-  )
+    <>
+      <Navbar />
+      <main>
+        <ZakatCalculator />
+      </main>
+      <Footer />
+    </>
+  );
 }
-
