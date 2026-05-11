@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api.metals.dev/v1/latest?api_key=18WGQCAOAVT6DMMAMFII467MAMFII&currency=USD&unit=g",
-      "schedule": "0 4,12,20 * * *"
+      "path": "/api/cron/refresh-cache",
+      "schedule": "0 */8 * * *"
     }
   ]
 }

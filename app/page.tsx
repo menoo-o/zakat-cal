@@ -5,7 +5,7 @@ export default async function Home() {
   return (
     <div>
       <Link href="/rates">View Rates</Link>
-
+        
     </div>
   )
 }

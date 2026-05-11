@@ -1,4 +1,5 @@
-  // app/data-component.tsx
+
+// app/data-component.tsx
 async function getRates() {
   const res = await fetch(
     'https://api.metals.dev/v1/latest?api_key=18WGQCAOAVT6DMMAMFII467MAMFII&currency=USD&unit=g',
