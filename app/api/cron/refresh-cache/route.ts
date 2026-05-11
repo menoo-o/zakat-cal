@@ -1,15 +1,8 @@
+import { verifySignatureAppRouter } from "@upstash/qstash/nextjs";
 import { NextResponse } from "next/server";
 import { redis } from "@/lib/redis";
 
-export async function GET(req: Request) {
-
-  // Security: Vercel sends this header automatically on cron calls
-  // Reject anything that isn't Vercel itself calling this route
-  const authHeader = req.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
+async function handler() {
   try {
     const response = await fetch(
       "https://api.metals.dev/v1/latest?api_key=YOUR_KEY&currency=USD&unit=g"
@@ -19,14 +12,18 @@ export async function GET(req: Request) {
 
     const data = await response.json();
 
-    // 8hr TTL — cron fires every 8hrs, so cache is always refreshed before expiry
+    // 8hr TTL — QStash fires every 8hrs, cache always warm
     await redis.set("market-data", data, { ex: 60 * 60 * 8 });
 
-    console.log("Cron: market data refreshed at", new Date().toISOString());
+    console.log("QStash cron: refreshed at", new Date().toISOString());
     return NextResponse.json({ success: true });
 
   } catch (error) {
-    console.error("Cron refresh failed:", error);
+    console.error("QStash cron failed:", error);
+    // Returning 500 tells QStash to RETRY automatically — built in!
     return NextResponse.json({ error: "Refresh failed" }, { status: 500 });
   }
 }
+
+// This wrapper does all the signature verification for you
+export const POST = verifySignatureAppRouter(handler);
