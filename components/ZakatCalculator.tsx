@@ -185,12 +185,12 @@ export default function ZakatCalculator() {
   const setAsset     = (k: keyof Assets)      => (v: number) => setAssets((p)       => ({ ...p, [k]: v }));
   const setLiability = (k: keyof Liabilities) => (v: number) => setLiabilities((p) => ({ ...p, [k]: v }));
 
-  const handleReset = () => {
-    setAssets(DEFAULT_ASSETS);
-    setLiabilities(DEFAULT_LIABILITIES);
-    setCurrency("USD");
-    setBasis("gold");
-  };
+  // const handleReset = () => {
+  //   setAssets(DEFAULT_ASSETS);
+  //   setLiabilities(DEFAULT_LIABILITIES);
+  //   setCurrency("USD");
+  //   setBasis("gold");
+  // };
 
   // ── Loading state ──
   if (!market || !calc) {
@@ -376,26 +376,7 @@ export default function ZakatCalculator() {
               </div>
             </div>
 
-            {/* Buttons */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <button
-                style={{ width: "100%", padding: "16px", background: "#ffffff", color: "#000000", border: "none", cursor: "pointer", fontSize: "16px", fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-              >
-                <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1", fontSize: "20px" }}>volunteer_activism</span>
-                Give Zakat
-              </button>
-              <button
-                onClick={handleReset}
-                style={{ width: "100%", padding: "16px", background: "transparent", border: "1px solid rgba(255,255,255,0.1)", color: "#e5e2e1", cursor: "pointer", fontSize: "14px", fontWeight: 500, display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>download</span>
-                Download Report
-              </button>
-            </div>
+         
 
             <p style={{ marginTop: "32px", textAlign: "center", color: "#7c7d7e", fontSize: "12px", lineHeight: "1.6" }}>
               Values are calculated based on current market rates.
