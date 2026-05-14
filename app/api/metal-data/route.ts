@@ -1,7 +1,20 @@
-import { redis } from "@/lib/redis";
+// import { redis } from "@/lib/redis";
+
+// export async function GET() {
+//   const data = await redis.get("market-data");
+
+//   return Response.json(data);
+// }
+
+
+// app/api/metal-data/route.ts
+import { NextResponse } from "next/server";
+import { getMarketData } from "@/lib/getMarketData";
 
 export async function GET() {
-  const data = await redis.get("market-data");
-
-  return Response.json(data);
+  const data = await getMarketData(); // ✅ server-side, env vars available
+  if (!data) {
+    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+  }
+  return NextResponse.json(data);
 }

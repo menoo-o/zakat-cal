@@ -1,19 +1,89 @@
 import { redis } from "@/lib/redis";
 
-export async function getMarketData() {
+// import type { Currency } from "./zakat";
+
+export interface NisabRates {
+  goldPricePerGram: number; // in USD
+  silverPricePerGram: number; // in USD
+  lastUpdated: string;
+}
+
+
+export interface MetalsApiResponse {
+  status: string;
+  currency: string;
+  unit: string;
+  metals: {
+    gold: number;
+    silver: number;
+    [key: string]: number;
+  };
+  currencies: {
+    AED: number;
+    GBP: number;
+    PKR: number;
+    EUR: number;
+    SAR: number;
+    USD: number;
+    [key: string]: number;
+  };
+  timestamps: {
+    metal: string;
+    currency: string;
+  };
+}
+
+export type Currency = "USD" | "PKR" | "GBP" | "EUR" | "SAR" | "AED";
+
+
+export interface MarketSnapshot {
+  rates: NisabRates;
+  exchangeRates: Record<Currency, number>;
+  metalTimestamp: string;
+  currencyTimestamp: string;
+}
+
+// Moved in from file_1.ts — transforms raw API shape into the MarketSnapshot
+// your app actually consumes. Kept as a named export so other modules can
+// reuse it if needed (e.g. the QStash cron handler).
+export function parseMarketData(data: MetalsApiResponse): MarketSnapshot {
+  return {
+    rates: {
+      goldPricePerGram: data.metals.gold,
+      silverPricePerGram: data.metals.silver,
+      // lastUpdated reflects the metal price timestamp from the API.
+      // When served from Redis cache this will be the timestamp of when
+      // the data was originally fetched — not the current time. That is
+      // correct behaviour: it tells the UI how fresh the prices actually are.
+      lastUpdated: data.timestamps.metal,
+    },
+    exchangeRates: {
+      USD: data.currencies.USD,
+      GBP: data.currencies.GBP,
+      PKR: data.currencies.PKR,
+      EUR: data.currencies.EUR,
+      SAR: data.currencies.SAR,
+      AED: data.currencies.AED,
+    },
+    metalTimestamp: data.timestamps.metal,
+    currencyTimestamp: data.timestamps.currency,
+  };
+}
+
+export async function getMarketData(): Promise<MarketSnapshot | null> {
   try {
     // 1. Check Redis cache
-    const cachedData = await redis.get("market-data");
+    const cachedData = await redis.get<MetalsApiResponse>("market-data");
 
-    // 2. If cache exists → return it immediately
+    // 2. Cache hit — parse and return immediately, no API call needed
     if (cachedData) {
       console.log("CACHE HIT");
-      return cachedData;
+      return parseMarketData(cachedData);
     }
 
     console.log("CACHE MISS");
 
-    // 3. Fetch external API
+    // 3. Fetch from external API
     const response = await fetch(
       "https://api.metals.dev/v1/latest?api_key=18WGQCAOAVT6DMMAMFII467MAMFII&currency=USD&unit=g"
     );
@@ -22,54 +92,39 @@ export async function getMarketData() {
       throw new Error(`API responded with status: ${response.status}`);
     }
 
-    const data = await response.json();
+    const data: MetalsApiResponse = await response.json();
 
-    // 4. Store in Redis (9-hour expiry)
-    // We do this before the conversion logic to ensure the raw data is saved even if conversion fails
+    // 4. Store raw API response in Redis (8hr TTL to stay ahead of QStash cron)
+    // Raw data is stored — not the parsed snapshot — so the cache stays
+    // generic and parseMarketData can evolve without invalidating cached entries.
     await redis.set("market-data", data, {
-      ex: 60 * 60 * 9, 
+      ex: 60 * 60 * 8,
     });
 
-    // 5. Processing/Conversion Logic
-    // Note: If 1 USD = 280 PKR, then PKR = USD * Rate
-    const usdToPkrRate = data.currencies.PKR;
-    
-    const convertUsdToPkr = (usdAmount: number): number => {
-      return usdAmount * usdToPkrRate;
-    };
-
-    // Example logging
-    const exampleUsd = 100;
-    const examplePkr = convertUsdToPkr(exampleUsd);
-    console.log(`$${exampleUsd} is approximately ₨${examplePkr.toFixed(2)}`);
-
-    // 6. Return fresh data
-    return data;
+    // 5. Parse and return fresh data
+    return parseMarketData(data);
 
   } catch (error: unknown) {
-    // 7. Handle errors gracefully
     if (isErrnoException(error)) {
-    if (error.code === 'EAI_AGAIN') {
-      console.error("DNS/Network Error: Could not reach Upstash or the API. Check your connection.");
+      if (error.code === "EAI_AGAIN") {
+        console.error("DNS/Network Error: Could not reach Upstash or the API. Check your connection.");
+      } else {
+        console.error("Failed to fetch market data:", error.message);
+      }
     } else {
-      console.error("Failed to fetch market data:", error.message);
+      console.error("An unexpected error occurred:", error);
     }
-  } else {
-    // Handle cases where the error is a string or something unexpected
-    console.error("An unexpected error occurred:", error);
-  }
-    // Return null or a fallback object so the UI doesn't crash
+
+    // Return null so the UI can handle the empty state gracefully
     return null;
   }
 }
 
-
-// 1. Define a helper to check for the 'code' property
 function isErrnoException(error: unknown): error is { code: string; message: string } {
   return (
-    typeof error === 'object' &&
+    typeof error === "object" &&
     error !== null &&
-    'code' in error &&
-    'message' in error
+    "code" in error &&
+    "message" in error
   );
 }
