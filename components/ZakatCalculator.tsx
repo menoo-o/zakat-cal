@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import type { MarketSnapshot } from "@/lib/getMarketData";
+// get module css file
 import s from "./ZakatCalculator.module.css";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
