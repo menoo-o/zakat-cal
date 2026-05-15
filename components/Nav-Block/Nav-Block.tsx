@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import "./Navbar.css"; // Ensure you import the CSS file here
+import './nav.css'
 
 export default function Navbar() {
   return (
