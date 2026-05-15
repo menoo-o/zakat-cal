@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import type { MarketSnapshot } from "@/lib/getMarketData";
-// get module css file
 import s from "./ZakatCalculator.module.css";
 
+import type { MarketSnapshot } from "@/lib/getMarketData";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type Currency = "USD" | "GBP" | "SAR" | "AED" | "EUR" | "PKR";
