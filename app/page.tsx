@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import ZakatCalculator from "@/components/ZakatCalculator";
+import ZakatCalculator from "@/components/Zakat-Block/ZakatCalculator";
 
 export default function Home() {
   return (

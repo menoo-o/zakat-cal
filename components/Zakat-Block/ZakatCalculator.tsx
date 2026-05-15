@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import s from "./ZakatCalculator.module.css";
+import s from "./zakat.module.css"
 
 import type { MarketSnapshot } from "@/lib/getMarketData";
 // ─── Types ────────────────────────────────────────────────────────────────────
