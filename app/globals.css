@@ -5,194 +5,11 @@
 /* ─────────────────────────────────────────────────────────────
    1. BASE TOKENS  (raw design values — single source of truth)
 ───────────────────────────────────────────────────────────── */
-:root {
-  /* Colors */
-  --on-error-container:           #ffdad6;
-  --on-tertiary-container:        #7c7d7e;
-  --outline-variant:              #444748;
-  --on-error:                     #690005;
-  --on-secondary-fixed-variant:   #474747;
-  --primary-fixed-dim:            #c8c6c5;
-  --on-primary-container:         #7e7d7d;
-  --surface-container-low:        #1c1b1b;
-  --secondary-fixed:              #e4e2e1;
-  --on-secondary:                 #303030;
-  --outline:                      #8e9192;
-  --error:                        #ffb4ab;
-  --inverse-surface:              #e5e2e1;
-  --surface-variant:              #353434;
-  --surface:                      #141313;
-  --tertiary-fixed:               #e2e2e3;
-  --surface-container-highest:    #353434;
-  --surface-bright:               #3a3939;
-  --inverse-on-surface:           #313030;
-  --on-surface-variant:           #c4c7c7;
-  --surface-tint:                 #c8c6c5;
-  --secondary-fixed-dim:          #c8c6c6;
-  --primary-fixed:                #e5e2e1;
-  --tertiary-container:           #101213;
-  --primary:                      #c8c6c5;
-  --on-primary:                   #313030;
-  --tertiary:                     #c6c6c7;
-  --on-secondary-container:       #b6b5b4;
-  --on-tertiary-fixed-variant:    #454748;
-  --surface-container-lowest:     #0e0e0e;
-  --on-surface:                   #e5e2e1;
-  --error-container:              #93000a;
-  --surface-dim:                  #141313;
-  --on-secondary-fixed:           #1b1c1c;
-  --secondary-container:          #474747;
-  --secondary:                    #c8c6c6;
-  --on-tertiary:                  #2f3132;
-  --inverse-primary:              #5f5e5e;
-  --on-primary-fixed-variant:     #474646;
-  --tertiary-fixed-dim:           #c6c6c7;
-  --surface-container-high:       #2b2a2a;
-  --on-tertiary-fixed:            #1a1c1d;
-  --surface-container:            #201f1f;
-  --background:                   #141313;
-  --primary-container:            #121212;
-  --on-primary-fixed:             #1c1b1b;
-  --on-background:                #e5e2e1;
 
-  /* Spacing scale */
-  --spacing-xs:            4px;
-  --spacing-sm:            8px;
-  --spacing-md:            16px;
-  --spacing-lg:            24px;
-  --spacing-xl:            40px;
-  --spacing-gutter:        16px;
-  --spacing-container-max: 1440px;
-
-  /* Border radius */
-  --radius-default: 0.125rem;
-  --radius-lg:      0.25rem;
-  --radius-xl:      0.5rem;
-  --radius-full:    0.75rem;
-}
 
 /* ─────────────────────────────────────────────────────────────
    2. THEME MAPPING  (raw tokens → Tailwind utility classes)
 ───────────────────────────────────────────────────────────── */
-@theme inline {
-
-  /* ── Colors ── */
-  --color-on-error-container:          var(--on-error-container);
-  --color-on-tertiary-container:       var(--on-tertiary-container);
-  --color-outline-variant:             var(--outline-variant);
-  --color-on-error:                    var(--on-error);
-  --color-on-secondary-fixed-variant:  var(--on-secondary-fixed-variant);
-  --color-primary-fixed-dim:           var(--primary-fixed-dim);
-  --color-on-primary-container:        var(--on-primary-container);
-  --color-surface-container-low:       var(--surface-container-low);
-  --color-secondary-fixed:             var(--secondary-fixed);
-  --color-on-secondary:                var(--on-secondary);
-  --color-outline:                     var(--outline);
-  --color-error:                       var(--error);
-  --color-inverse-surface:             var(--inverse-surface);
-  --color-surface-variant:             var(--surface-variant);
-  --color-surface:                     var(--surface);
-  --color-tertiary-fixed:              var(--tertiary-fixed);
-  --color-surface-container-highest:   var(--surface-container-highest);
-  --color-surface-bright:              var(--surface-bright);
-  --color-inverse-on-surface:          var(--inverse-on-surface);
-  --color-on-surface-variant:          var(--on-surface-variant);
-  --color-surface-tint:                var(--surface-tint);
-  --color-secondary-fixed-dim:         var(--secondary-fixed-dim);
-  --color-primary-fixed:               var(--primary-fixed);
-  --color-tertiary-container:          var(--tertiary-container);
-  --color-primary:                     var(--primary);
-  --color-on-primary:                  var(--on-primary);
-  --color-tertiary:                    var(--tertiary);
-  --color-on-secondary-container:      var(--on-secondary-container);
-  --color-on-tertiary-fixed-variant:   var(--on-tertiary-fixed-variant);
-  --color-surface-container-lowest:    var(--surface-container-lowest);
-  --color-on-surface:                  var(--on-surface);
-  --color-error-container:             var(--error-container);
-  --color-surface-dim:                 var(--surface-dim);
-  --color-on-secondary-fixed:          var(--on-secondary-fixed);
-  --color-secondary-container:         var(--secondary-container);
-  --color-secondary:                   var(--secondary);
-  --color-on-tertiary:                 var(--on-tertiary);
-  --color-inverse-primary:             var(--inverse-primary);
-  --color-on-primary-fixed-variant:    var(--on-primary-fixed-variant);
-  --color-tertiary-fixed-dim:          var(--tertiary-fixed-dim);
-  --color-surface-container-high:      var(--surface-container-high);
-  --color-on-tertiary-fixed:           var(--on-tertiary-fixed);
-  --color-surface-container:           var(--surface-container);
-  --color-background:                  var(--background);
-  --color-primary-container:           var(--primary-container);
-  --color-on-primary-fixed:            var(--on-primary-fixed);
-  --color-on-background:               var(--on-background);
-
-  /* ── Spacing ── */
-  --spacing-xs:            var(--spacing-xs);
-  --spacing-sm:            var(--spacing-sm);
-  --spacing-md:            var(--spacing-md);
-  --spacing-lg:            var(--spacing-lg);
-  --spacing-xl:            var(--spacing-xl);
-  --spacing-gutter:        var(--spacing-gutter);
-  --spacing-container-max: var(--spacing-container-max);
-
-  /* ── Border radius ── */
-  --radius-DEFAULT: var(--radius-default);
-  --radius-lg:      var(--radius-lg);
-  --radius-xl:      var(--radius-xl);
-  --radius-full:    var(--radius-full);
-
-  /* ── Font families ── */
-  --font-display-lg:          "Plus Jakarta Sans", sans-serif;
-  --font-headline-lg:         "Plus Jakarta Sans", sans-serif;
-  --font-headline-md:         "Plus Jakarta Sans", sans-serif;
-  --font-headline-lg-mobile:  "Plus Jakarta Sans", sans-serif;
-  --font-body-lg:             "Plus Jakarta Sans", sans-serif;
-  --font-body-md:             "Plus Jakarta Sans", sans-serif;
-  --font-label-sm:            "Plus Jakarta Sans", sans-serif;
-  --font-numeric-data:        "Plus Jakarta Sans", sans-serif;
-
-  /* ── Font sizes (with built-in line-height / tracking / weight) ── */
-  --text-display-lg:                    48px;
-  --text-display-lg--line-height:       56px;
-  --text-display-lg--letter-spacing:   -0.02em;
-  --text-display-lg--font-weight:       700;
-
-  --text-headline-lg:                   32px;
-  --text-headline-lg--line-height:      40px;
-  --text-headline-lg--letter-spacing:  -0.01em;
-  --text-headline-lg--font-weight:      600;
-
-  --text-headline-md:                   24px;
-  --text-headline-md--line-height:      32px;
-  --text-headline-md--letter-spacing:  -0.01em;
-  --text-headline-md--font-weight:      600;
-
-  --text-headline-lg-mobile:            28px;
-  --text-headline-lg-mobile--line-height: 36px;
-  --text-headline-lg-mobile--font-weight: 600;
-
-  --text-body-lg:                       18px;
-  --text-body-lg--line-height:          28px;
-  --text-body-lg--letter-spacing:       0em;
-  --text-body-lg--font-weight:          400;
-
-  --text-body-md:                       16px;
-  --text-body-md--line-height:          24px;
-  --text-body-md--letter-spacing:       0em;
-  --text-body-md--font-weight:          400;
-
-  --text-label-sm:                      12px;
-  --text-label-sm--line-height:         16px;
-  --text-label-sm--letter-spacing:      0.05em;
-  --text-label-sm--font-weight:         600;
-
-  --text-numeric-data:                  14px;
-  --text-numeric-data--line-height:     20px;
-  --text-numeric-data--letter-spacing:  0.02em;
-  --text-numeric-data--font-weight:     500;
-
-  /* ── Max-width utility ── */
-  --width-container-max: var(--spacing-container-max);
-}
 
 /* ─────────────────────────────────────────────────────────────
    3. BASE LAYER
@@ -265,3 +82,163 @@
     'GRAD' 0,
     'opsz' 24;
 }
+
+
+
+#metals-dashboard {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+  display: inline-block;
+  box-shadow: 0 0 6px #4caf50;
+}
+
+.live-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8e9192;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dashboard-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #e5e2e1;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.dashboard-subtitle {
+  font-size: 13px;
+  color: #7c7d7e;
+}
+
+.metals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.metal-card {
+  background: #201f1f;
+  border-radius: 4px;
+  padding: 28px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.metal-card.active {
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.metal-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.metal-icon {
+  width: 52px;
+  height: 52px;
+  background: #2b2a2a;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.metal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e5e2e1;
+  letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.metal-pair {
+  font-size: 12px;
+  color: #7c7d7e;
+  letter-spacing: 0.04em;
+}
+
+.metal-right {
+  text-align: right;
+}
+
+.metal-price {
+  font-size: 36px;
+  font-weight: 700;
+  color: #e5e2e1;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.metal-gram {
+  font-size: 12px;
+  color: #7c7d7e;
+  margin-top: 4px;
+}
+
+
+.dashboard-container { max-width: 1440px; margin: 0 auto; padding: 64px 24px 48px; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; }
+.status-indicator-container { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf50; display: inline-block; box-shadow: 0 0 6px #4caf50; }
+.status-text { font-size: 12px; font-weight: 600; color: #8e9192; letter-spacing: 0.1em; text-transform: uppercase; }
+.dashboard-title { font-size: 36px; font-weight: 700; color: #e5e2e1; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; }
+.update-timestamp { font-size: 13px; color: #7c7d7e; }
+
+.price-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.price-card { background: #201f1f; border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; padding: 28px; cursor: pointer; transition: border-color 0.2s; display: flex; align-items: flex-start; justify-content: space-between; }
+.price-card.active { border-color: rgba(255,255,255,0.15); }
+.card-info { display: flex; align-items: center; gap: 16px; }
+.metal-icon { width: 52px; height: 52px; background: #2b2a2a; border-radius: 4px; display: flex; align-items: center; justify-content: center; fontSize: 22px; }
+.metal-label { font-size: 18px; font-weight: 700; color: #e5e2e1; margin-bottom: 2px; }
+.currency-code { font-size: 12px; color: #7c7d7e; letter-spacing: 0.04em; }
+.card-values { text-align: right; }
+.price-main { font-size: 36px; font-weight: 700; color: #e5e2e1; line-height: 1; }
+.price-sub { font-size: 12px; color: #7c7d7e; margin-top: 4px; }
+
+.rates-table-container { border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+.table-header { display: grid; grid-template-columns: 1fr 1fr; background: #1c1b1b; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.metal-toggle-group { display: flex; align-items: center; gap: 8px; padding: 14px 20px; }
+.toggle-button { padding: 4px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; border: none; cursor: pointer; border-radius: 2px; background: transparent; color: #7c7d7e; transition: all 0.15s; display: flex; align-items: center; gap: 6px; }
+.toggle-button.active { background: #353434; color: #e5e2e1; }
+.toggle-arrow { font-size: 10px; color: #8e9192; }
+.column-label { padding: 14px 20px; text-align: right; font-size: 12px; font-weight: 600; color: #7c7d7e; text-transform: uppercase; }
+
+.table-row { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 18px 20px; background: #201f1f; transition: background 0.15s; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.table-row:last-child { border-bottom: none; }
+.table-row:nth-child(even) { background: #1e1d1d; }
+.table-row:hover { background: #2b2a2a !important; }
+.row-label { font-size: 15px; font-weight: 500; color: #c4c7c7; }
+.row-value { font-size: 15px; font-weight: 600; color: #e5e2e1; text-align: right; font-variant-numeric: tabular-nums; }

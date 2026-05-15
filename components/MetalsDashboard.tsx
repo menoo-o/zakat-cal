@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { MarketSnapshot } from "@/lib/getMarketData";
-import "./metals.css"
+
 
 type Metal = "gold" | "silver";
 type Currency = "USD" | "GBP" | "SAR" | "AED" | "EUR" | "PKR";
