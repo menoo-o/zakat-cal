@@ -1,4 +1,3 @@
-/* Container & Layout */
 .nav-header {
   position: fixed;
   top: 0;
@@ -22,11 +21,14 @@
   justify-content: space-between;
 }
 
-/* Left Section & Links */
 .nav-left {
   display: flex;
   align-items: center;
   gap: 40px;
+}
+
+.logo-link {
+  text-decoration: none;
 }
 
 .nav-logo {
@@ -47,26 +49,27 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  padding-bottom: 4px;
 }
 
+/* Dynamic States */
 .nav-link.active {
   font-weight: 700;
   color: #c8c6c5;
   border-bottom: 2px solid #c8c6c5;
-  padding-bottom: 4px;
 }
 
 .nav-link.idle {
   font-weight: 500;
   color: #7c7d7e;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-link.idle:hover {
   color: #e5e2e1;
 }
 
-/* Right Section & Buttons */
 .nav-right {
   display: flex;
   align-items: center;
@@ -86,12 +89,6 @@
   cursor: pointer;
   font-family: "Material Symbols Outlined", sans-serif;
   font-size: 20px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.nav-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #e5e2e1;
 }
 
 .nav-btn {
@@ -101,23 +98,16 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.nav-btn:hover {
-  opacity: 0.9;
+  border: none;
 }
 
 .nav-btn-secondary {
   background: #2b2a2a;
   color: #e5e2e1;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: 500;
 }
 
 .nav-btn-primary {
   background: #e5e2e1;
   color: #141313;
-  border: none;
-  font-weight: 700;
 }
